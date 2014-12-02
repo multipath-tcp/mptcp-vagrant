@@ -1,0 +1,34 @@
+You need vagrant to use this. Get it at http://www.vagrantup.com/downloads.html
+
+You can start the guest with the script run.sh
+
+This vagrant config downloads an Ubuntu 14.04 image if it's not yet present, and
+starts a virtualbox image with it. The provisioning is done with the script 
+guest-data/setup.sh:
+- it add the mptcp repo
+- install the mptcp kernel and ip route
+- installs de packages found at guest-data/to_install/*deb . This can be used to install
+  your compiled kernel.
+- update the grub config to use the saved option
+
+The guest has 2 network interfaces: eth0, which is natted by virtualbox, and eth1
+which is routed via the vboxnet0 interface on the host. The default route of the guest
+is via eth1 and thus uses the network stack of the guest.
+For the guest to access the internet, NAT has to be configured (which is done in run.sh with iptables). 
+
+To validate mptcp is working in the guest:
+- disable mptcp on the host: echo 0 >/proc/sys/net/mptcp/mptcp_enabled
+- enter the guest: vagrant ssh
+- check mptcp is working: curl multipath-tcp.org
+
+Helper scripts are provided in bin/, mostly useful if you want to do kernel development.
+First edit the file etc/settings.sh and set you kernel sources location.
+
+Scripts provided are:
+- compile-kernel.sh : used to compile a kernel, install it in the vm, and reboot it.
+- install_kernel.sh : used to install an existing kernel package in the vm
+- switch_kernel.sh  : used to boot the vm on a kernel of your choice, once only or by default
+- reboot.sh         : reboots the vm
+
+Run the scripts with --help to get more info.
+
