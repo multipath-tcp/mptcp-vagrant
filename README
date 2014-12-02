@@ -1,20 +1,32 @@
-You need vagrant to use this. Get it at http://www.vagrantup.com/downloads.html
+You need vagrant  and virtualbox to use this. Get it at http://www.vagrantup.com/downloads.html
+and https://www.virtualbox.org/wiki/Downloads
 
-You can start the guest with the script run.sh
+Here's how to start using it:
+    git clone https://github.com/multipath-tcp/mptcp-vagrant.git
+    cd mptcp-vagrant
+    ./up.sh
+    # reboot to use mptcp kernel installed by provisioning script
+    vagrant halt
+    vagrant up
+    vagrant ssh
+    curl www.multipath-tcp.org
+
+You should see this as output of the curl command:
+    Yay, you are MPTCP-capable! You can now rest in peace.
+
 
 This vagrant config downloads an Ubuntu 14.04 image if it's not yet present, and
 starts a virtualbox image with it. The provisioning is done with the script 
 guest-data/setup.sh:
 - it add the mptcp repo
 - install the mptcp kernel and ip route
-- installs de packages found at guest-data/to_install/*deb . This can be used to install
-  your compiled kernel.
+- installs the packages found at guest-data/to_install/*deb .
 - update the grub config to use the saved option
 
 The guest has 2 network interfaces: eth0, which is natted by virtualbox, and eth1
 which is routed via the vboxnet0 interface on the host. The default route of the guest
-is via eth1 and thus uses the network stack of the guest.
-For the guest to access the internet, NAT has to be configured (which is done in run.sh with iptables). 
+is set via eth1 by the provisioning script.
+For the guest to access the internet, NAT has to be configured on the host (which is done in run.sh with iptables). 
 
 To validate mptcp is working in the guest:
 - disable mptcp on the host: echo 0 >/proc/sys/net/mptcp/mptcp_enabled
