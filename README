@@ -41,6 +41,8 @@ Scripts provided are:
 - install_kernel.sh : used to install an existing kernel package in the vm
 - switch_kernel.sh  : used to boot the vm on a kernel of your choice, once only or by default
 - reboot.sh         : reboots the vm
+- netconsole.sh     : opens a netconsole client on the host terminal, helping in getting full
+                      kernel traces on the host in case of a crash
 
 Run the scripts with --help to get more info.
 
