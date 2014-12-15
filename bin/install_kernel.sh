@@ -4,6 +4,7 @@ help() {
   cat <<-EOF
 $(basename $0) [--deb /path/to/kernel.deb--help]
   --deb : debian package of kernel to install
+  --reboot: reboot after install. Default: do not reboot
   --help   : this help
 EOF
 }
@@ -41,6 +42,8 @@ done
 
 my_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 . $my_dir/../lib/functions.sh
+
+[[ -z $kernel_package ]] && $0 --help && exit
 
 install_kernel $kernel_package
 
