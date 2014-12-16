@@ -45,6 +45,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.synced_folder '.', '/vagrant', disabled: true
 
   config.vm.synced_folder "guest-data", "/guest-data" , type:  "rsync", rsync__auto: true, rsync__exclude: "installed"
+  config.vm.synced_folder "etc", "/etc/vagrant-guest" , type:  "rsync", rsync__auto: true
 
   # Provider-specific configuration so you can fine-tune various
   # backing providers for Vagrant. These expose provider-specific options.
