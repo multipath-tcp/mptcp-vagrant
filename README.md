@@ -16,8 +16,10 @@ Currently onle Linux hosts with iptables are supported.
 Using it
 ========
 
-git clone https://github.com/rbauduin/vagrant_mptcp.git
-./up.sh
+Get it and use it:
+
+    git clone https://github.com/rbauduin/vagrant_mptcp.git
+    ./up.sh
 
 This will:
 
