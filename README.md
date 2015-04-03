@@ -19,6 +19,7 @@ Using it
 Get it and use it:
 
     git clone https://github.com/rbauduin/vagrant_mptcp.git
+    cd vagrant_mptcp
     ./up.sh
 
 This will:
