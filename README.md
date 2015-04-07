@@ -7,11 +7,13 @@ support from the host.
 
 Requirements
 ============
-You need vagrant and virtualbox. Get it at http://www.vagrantup.com/downloads.html
+You need a recent vagrant installed and virtualbox. Get it at http://www.vagrantup.com/downloads.html
 and https://www.virtualbox.org/wiki/Downloads
 
+When vagrant is installed, you need to install the vagrant-trigger plugin:
+
 You also need to have root access via sudo so the script can add NAT rules.
-Currently onle Linux hosts with iptables are supported.
+Currently only Linux hosts with iptables are supported.
 
 Using it
 ========
@@ -20,7 +22,7 @@ Get it and use it:
 
     git clone https://github.com/rbauduin/vagrant_mptcp.git
     cd vagrant_mptcp
-    ./up.sh
+    vagrant up
 
 This will:
 
@@ -33,4 +35,8 @@ To validate all works as expected, issue this command:
     vagrant ssh -c "curl www.multipath-tcp.org"
 
 The outpout should be message full of joy, congratulating you for your MPTCP capabilities!
+
+You stop the vm by issuing
+  vagrant halt
+This will also remove the NAT that was setup when starting the vm.
   

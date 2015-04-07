@@ -12,6 +12,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # Every Vagrant virtual environment requires a box to build off of.
   config.vm.box = "rbauduin/mptcp-minimal"
 
+  config.vm.hostname = "mptcpbox"
+
   # Disable automatic box update checking. If you disable this, then
   # boxes will only be checked for updates when the user runs
   # `vagrant box outdated`. This is not recommended.
@@ -125,5 +127,32 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # chef-validator, unless you changed the configuration.
   #
   #   chef.validation_client_name = "ORGNAME-validator"
-  config.vm.provision "shell", path: "provision.sh", run: "always"
+  config.vm.provision "shell", path: "scripts/provision.sh", run: "always"
+
+  config.vm.post_up_message = %{
+  #######################################################################
+
+  Things should be set up for you to test MPTCP from the virtual machine.
+  To validate that MPTCP is working from inside the vm, issue
+    vagrant ssh -c \"curl www.multipath-tcp.org\"
+
+  You should get a joyful message announcing you are using MPTCP.
+
+  To log in, just issue the command
+    vagrant ssh
+
+  You can now become root with 
+    sudo su
+
+  and manage this debian virtual machine.
+
+   #######################################################################
+}   
+
+  config.trigger.after :up do 
+    run "./scripts/post_up.sh"
+  end
+  config.trigger.after :halt do 
+    run "./scripts/post_halt.sh"
+  end
 end
