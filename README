@@ -1,6 +1,9 @@
 You need vagrant  and virtualbox to use this. Get it at http://www.vagrantup.com/downloads.html
 and https://www.virtualbox.org/wiki/Downloads
 
+This is a version I used when doing some kernel development. If you just want to use MPTCP
+from a vagrant box, you should look at the master branch.
+
 Here's how to start using it:
     git clone https://github.com/multipath-tcp/mptcp-vagrant.git
     cd mptcp-vagrant
