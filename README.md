@@ -12,8 +12,10 @@ and https://www.virtualbox.org/wiki/Downloads
 
 When vagrant is installed, you need to install the vagrant-trigger plugin:
 
+vagrant plugin install vagrant-triggers
+
 You also need to have root access via sudo so the script can add NAT rules.
-Currently only Linux hosts with iptables are supported.
+Currently Linux and Mac OS X hosts are supported.
 
 Using it
 ========
@@ -42,3 +44,8 @@ You stop the vm by issuing
   vagrant halt
 This will also remove the NAT that was setup when starting the vm.
   
+
+Thanks
+======
+
+Thanks to @mpyw for the Mac OS X NAT.
