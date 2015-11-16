@@ -11,7 +11,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   # Every Vagrant virtual environment requires a box to build off of.
   config.vm.box = "rbauduin/mptcp-minimal"
-  config.vm.box_version = '0.0.1'
+  config.vm.box_version = '0.0.2'
 
   config.vm.hostname = "mptcpbox"
 
