@@ -150,10 +150,10 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
    #######################################################################
 }   
 
-  config.trigger.after :up do 
-    run "./scripts/post_up.sh"
+  config.trigger.after :up do |trigger|
+    trigger.run = {path: "scripts/post_up.sh"}
   end
-  config.trigger.after :halt do 
-    run "./scripts/post_halt.sh"
+  config.trigger.after :halt do |trigger|
+    trigger.run = {path: "scripts/post_halt.sh"}
   end
 end
