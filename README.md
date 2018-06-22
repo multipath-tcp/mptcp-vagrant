@@ -10,8 +10,6 @@ Requirements
 You need a recent vagrant installed and virtualbox. Get it at http://www.vagrantup.com/downloads.html
 and https://www.virtualbox.org/wiki/Downloads
 
-The plugin  vagrant-trigger is also required (see below for installing it).
-
 You also need to have root access via sudo so the script can add NAT rules.
 Currently Linux and Mac OS X hosts are supported.
 
@@ -22,8 +20,6 @@ Get it and use it:
 
     git clone https://github.com/multipath-tcp/mptcp-vagrant.git
     cd mptcp-vagrant
-    # only the first time:
-    vagrant plugin install vagrant-triggers
     vagrant up
 
 This will:
