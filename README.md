@@ -1,3 +1,5 @@
+_Note from 2024: This project is defunct. The Vagrantfile does not work anymore, consider using [mptcp-upstream-virtme-docker](https://github.com/multipath-tcp/mptcp-upstream-virtme-docker) instead._
+
 About
 =====
 This repo contains vagrant configurations to help you test Multipath TCP.
