@@ -8,11 +8,11 @@ vagrant ssh client <<EOF
 
     # Configure MPTCP
     sudo sysctl net.mptcp.enabled=1
-    sudo ip mptcp limits set subflow 3
-    sudo ip mptcp limits set add_addr_accepted 3
+    sudo ip mptcp limits set subflow 8
+    sudo ip mptcp limits set add_addr_accepted 8
     sudo ip mptcp endpoint add 192.168.57.100 dev eth2 subflow
     sudo ip mptcp endpoint add 192.168.58.100 dev eth3 subflow
-EOF 2> /dev/null
+EOF
 
 vagrant ssh server <<EOF
     # Sometimes the ip addresses aren't assigned by virtualbox, so do it manually
@@ -22,7 +22,7 @@ vagrant ssh server <<EOF
 
     # Configure MPTCP
     sudo sysctl net.mptcp.enabled=1
-    sudo ip mptcp limits set subflow 3
+    sudo ip mptcp limits set subflow 8
     sudo ip mptcp endpoint add 192.168.57.101 dev eth2 signal
     sudo ip mptcp endpoint add 192.168.58.101 dev eth3 signal
 EOF

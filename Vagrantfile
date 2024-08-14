@@ -13,8 +13,8 @@ Vagrant.configure("2") do |config|
     # Every Vagrant development environment requires a box. You can search for
     # boxes at https://vagrantcloud.com/search.
     config.vm.define :client do |client|
-      client.vm.box = "fedora/40-cloud-base"
-      client.vm.box_version = "40.20240414.0"
+      client.vm.box = "fedora/39-cloud-base"
+      client.vm.box_version = "39.20231031.1"
       client.vm.network :private_network, ip: "192.168.56.100", netmask: "24"
       client.vm.network :private_network, ip: "192.168.57.100", netmask: "24"
       client.vm.network :private_network, ip: "192.168.58.100", netmask: "24"
@@ -23,8 +23,8 @@ Vagrant.configure("2") do |config|
     end
   
     config.vm.define :server do |server|
-      server.vm.box = "fedora/40-cloud-base"
-      server.vm.box_version = "40.20240414.0"
+      server.vm.box = "fedora/39-cloud-base"
+      server.vm.box_version = "39.20231031.1"
       server.vm.network :private_network, ip: "192.168.56.101", netmask: "24"
       server.vm.network :private_network, ip: "192.168.57.101", netmask: "24"
       server.vm.network :private_network, ip: "192.168.58.101", netmask: "24"
