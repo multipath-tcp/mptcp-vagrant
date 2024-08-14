@@ -1,0 +1,3 @@
+[submodule "mptcp-hello"]
+	path = mptcp-hello
+	url = https://github.com/mptcp-apps/mptcp-hello
